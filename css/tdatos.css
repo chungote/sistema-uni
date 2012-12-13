@@ -1,0 +1,26 @@
+
+.tdatos{
+    border: solid #ccc 1px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 1px #ccc; 
+    -moz-box-shadow: 0 1px 1px #ccc; 
+    box-shadow: 0 1px 1px #ccc; 
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    background-color: #F1F4F4;
+    border: thin none; 
+    border-collapse: collapse;
+}
+
+.tdatos tr, td{
+    padding: 10px;
+    border: thin solid #086117;
+}
+
+.cabeceras{
+    color: #0F3A76;
+    font-weight: bold;
+}

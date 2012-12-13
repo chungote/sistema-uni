@@ -1,0 +1,49 @@
+<script language="javascript">
+function validacion() {
+    usu = document.getElementById("usuario").value;
+    clave = document.getElementById("clave").value;
+if( usu == null || usu.length == 0 || /^\s+$/.test(usu) ) {
+    alert("Escribe tu id");
+return false;
+}
+else if ( clave == null || clave.length == 0 || /^\s+$/.test(clave) ) {
+    alert("Escribe tu clave");
+    return false;
+}
+return true;
+}
+</script>
+<div id="login" class="login">
+	<div id="head_login" class="head_login">SIGA</div>
+	<div id="title" class="title_login">Ingresar al Sistema</div>
+    <div class="img_title"></div>
+	<form id="form_login" method="post" class="form_login" action="includes/src/login.php" onsubmit="validacion()">
+		<table>
+			<tr>
+				<td>Nivel: </td>
+				<td>
+					<select name="nivel">
+						<option value="1">Alumno</option>
+						<option value="2">Docentes</option>
+						<option value="3">Administrador</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Usuario:</td>
+				<td><input type="text" id="usuario" name="user" maxlength="13" size="27"/></td>
+			</tr>
+			<tr>
+				<td>Clave:</td>
+				<td><input type="password" id="clave" name="clave" size="27"/></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+                    <input type="submit" class="button_login" value="INGRESAR"/>
+                    <input type="reset" class="button_login" value="LIMPIAR"/>                                                  
+                </td>	
+			</tr>
+
+		</table>
+	</form>
+</div>

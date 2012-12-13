@@ -1,0 +1,40 @@
+<?php
+    class pagos{
+    	
+		public function listarpagos($c,$v)
+		{
+			 include("../conexion.php");
+
+        $rs_list = $cn->query("CALL paPagosConsulta($c, $v)");
+        $row_list = $rs_list->num_rows;
+
+        echo '
+        <table class="bordered">
+
+        <tr>
+            <th>Codigo</th>
+            <th>Alumno</th>
+            <th>Semestre</th>
+            <th>Tipo Pago</th>
+            <th>Descripcion</th>
+            <th>Fecha Pago</th>
+        </tr>
+        ';
+        $i=0;
+        while($rows = $rs_list->fetch_array(MYSQLI_ASSOC))
+        {
+            echo "<tr>";
+            echo "<td>".$rows["idpago"]."</td>";
+            echo "<td>".$rows["nombre"]."</td>";
+            echo "<td>".$rows["semestre"]."</td>";
+            echo "<td>".$rows["tipo_pago"]."</td>";
+			echo "<td>".$rows["descripcion"]."</td>";
+			echo "<td>".$rows["fecha_pago"]."</td>";
+            echo "</tr>";
+            $i++;
+        };
+        echo "</table>";
+        //$cn->close();
+		}
+    }
+?>
