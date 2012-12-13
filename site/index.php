@@ -1,6 +1,6 @@
 <?php
 	session_start();
-
+//mary es pleiitista
 ?>
 <html>
 <head>
