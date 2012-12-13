@@ -1,0 +1,32 @@
+/*
+Web dise–ada y programada por Emenia
+www.emenia.es
+jbustamante@emenia.es
+*/
+
+/* 
+	R E S E T (Por Eric Meyer)
+*/
+
+	ol, ul 											{	list-style: none;}
+	blockquote, q 									{	quotes: none;}
+	:focus 											{	outline: 0;}
+	ins 											{	text-decoration: none;}
+	del 											{	text-decoration: line-through;}
+	table 											{	border-collapse: collapse;	border-spacing: 0; }
+    body                                            {   font-size: 62.5%;}
+	a img 											{	border:none } 
+
+/* 
+	C L A S E S   P R E S E N T A C I O N A L E S
+*/
+	.aligncenter 			{	display:block; margin:0 auto }
+	.alignleft 				{	float:left }
+	.alignright 			{	float:right }
+	br.clear 				{	clear:both; display:block; height:1px; margin:-1px 0 0 0 } 
+
+
+	
+
+
+

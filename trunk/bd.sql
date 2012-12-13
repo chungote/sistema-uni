@@ -1,0 +1,1 @@
+CALL `paMatriculaRegistrar`("A0001", "2323", "dfsdf", "d43", "2012-11-17", 11)
