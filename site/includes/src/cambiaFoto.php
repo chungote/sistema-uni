@@ -9,5 +9,7 @@
     $nivel = $_SESSION["usuarioNivel"];
 
     $cambiaFoto = $usuario->cambiarFoto($nombreImagen,$tipoImagen,$idusuario,$nivel);
+    
+    //hola
 
 ?>
