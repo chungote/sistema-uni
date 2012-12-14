@@ -2,6 +2,13 @@
 
 class curso{
     
+    function listarCursoxAlumno(){
+        include("includes/conexion.php");
+        
+        
+	
+}
+    
     function Listarxcurso($id){
         
         include("includes/conexion.php");

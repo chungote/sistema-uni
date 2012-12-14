@@ -10,6 +10,8 @@
 
     $cambiaFoto = $usuario->cambiarFoto($nombreImagen,$tipoImagen,$idusuario,$nivel);
     
-    //hola
+    echo "<script language='JavaScript'> alert('La foto se cambio correctamente'); </script>";
+        
+        echo "<meta http-equiv='Refresh' content='0;URL=index.php'/>";
 
 ?>
