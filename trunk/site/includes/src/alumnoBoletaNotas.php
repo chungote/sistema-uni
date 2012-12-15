@@ -9,7 +9,8 @@
 
     $rsPromP = $cn->query("SELECT getPromedioPonderado('$idalumno','$semestre') AS promediop");
     $rstotalC = $cn->query("SELECT getTotalCreditosXSemestre('$idalumno','$semestre') AS 'totalCreditos'");
-    $rowPromP
+    $rowPromP = $rsPromP->fetch_array(MYSQLI_ASSOC);
+    $rowtotalC = $rstotalC->fetch_array(MYSQLI_ASSOC);
 ?>
 <!DOCTYPE HTML>
 <head>
@@ -58,7 +59,13 @@
     <tr>
         <td></td>
         <td>Total Creditos</td>
+        <td><?php echo $rowtotalC["totalCreditos"]; ?></td>
         <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Promedio Ponderado</td>
+        <td><?php echo $rowPromP["promediop"]; ?></td>
         <td></td>
     </tr>
 </table>
