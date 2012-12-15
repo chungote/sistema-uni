@@ -4,7 +4,7 @@
 class alumno
 {
 
-var $ciclo;
+    var $ciclo;
 
     function __construct()
     {
@@ -71,11 +71,11 @@ var $ciclo;
         return $rows;
     }
 
-    function listarCursosInscritos($idalumnos)
+    function listarCursosInscritos($idalumno)
     {
-        include ("includes/conexion.php");
+        include ("../conexion.php");
 
-        $rs_list = $cn->query("CALL paAlumnosCursosInscritos('$idalumnos')");
+        $rs_list = $cn->query("CALL paAlumnosCursosInscritos('$idalumno')");
         $row_list = $rs_list->num_rows;
 
         echo '
@@ -84,7 +84,6 @@ var $ciclo;
         <tr>
             <th>ID Curso</th>
             <th>Nombre Curso</th>
-            <th>DNI</th>
             <th>Ciclo</th>
             <th>Creditos</th>
             <th>Vez</th>
@@ -107,12 +106,44 @@ var $ciclo;
 
     function listarCursosDisponibles($id)
     {
-        include '../conexion.php';
+        include 'includes/conexion.php';
         $rsCiclo = $cn->query("SELECT a.cicloActual FROM alumno a WHERE a.idalumno='$id'");
         $row = $rsCiclo->fetch_array(MYSQLI_ASSOC);
-        $this->ciclo = $row["ciclo"];
-        
+        $c = $row["ciclo"];
+
+        if ($c = '1') {
+            $rsCursos = $cn->query("SELECT c.idcurso, c.nombre, c.ciclo, c.creditos,
+            (SELECT COUNT(idcurso) FROM inscripcion_curso WHERE idmatricula=
+             (SELECT idmatricula FROM matricula WHERE idalumno='$id' AND fecha_matricula = 
+             (SELECT MAX(fecha_matricula) FROM matricula WHERE idalumno='$id'))
+             AND idcurso=c.idcurso) AS estado
+             FROM curso c WHERE c.ciclo='1' AND c.estado=1");
+
+        }
+
+        $i = 0;
+        while ($rows = $rsCursos->fetch_array(MYSQLI_ASSOC)) {
+            $estado = $rows["estado"];
+            if($estado==1) $lectura= "disabled='disabled'";
+            else if($estado==0) $lectura = "";
+            echo "<tr>\n";
+            echo "<td>" . $rows["idcurso"] . "</td>\n";
+            echo "<td>" . $rows["nombre"] . "</td>\n";
+            echo "<td>" . $rows["ciclo"] . "</td>\n";
+            echo "<td>" . $rows["creditos"] . "</td>\n";
+            echo '<td><input  type="checkbox" '.$lectura.' name="curso[]" value="' . $rows["idcurso"] .
+                '"/></td>';
+            echo "</tr>";
+            $i++;
+        }
+        ;
     }
+    
+    function inscribirCurso($idalumno,$cursos){
+        include '../conexion.php';
+        $rs = $cn->query("CALL paAlumnoInscribirCursos('$idalumno', '$cursos')");
+	
+}
 
     public function modificar($nombre, $apellidos, $sexo, $dni, $fechan, $direccion,
         $telefono, $celular, $email, $id)
@@ -136,6 +167,17 @@ var $ciclo;
         else
             return false;
     }
+    
+    function boletaNotas($idalumno,$semestre){
+        include '../conexion.php';
+        
+        $rslProm = $cn->query("CALL paAlumnoListarPromediosID('$idalumno','$semestre')");
+        $rsPromP = $cn->query("SELECT getPromedioPonderado('$idalumno','$semestre') AS promediop");
+        $rstotalC = $cn->query("SELECT getTotalCreditosXSemestre('$idalumno','$semestre') AS 'totalCreditos'");
+        
+        
+	
+}
 
 }
 

@@ -35,7 +35,7 @@ $(document).ready(function() {
             data: $(this).serialize(),
             success: function(data) {
                 $('#result').html(data);
-                
+                setTimeout(location.href="index.php", 2000);
             }
         })
         

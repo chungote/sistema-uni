@@ -1,6 +1,5 @@
 <?php
 	session_start();
-//mary es pleiitista
 ?>
 <html>
 <head>
@@ -110,7 +109,8 @@ include("banner.htm");
                                 case 'datospersonales': echo "<iframe src='includes/src/alumnoListaID.php?id=".$_SESSION["user"]."'' width='930px' height='350px' frameborder='0'></iframe>"; break;
                                 case 'cambiarclave': include("form/frmAlumnoCambiaClave.php"); break;
                                 case 'cambiarfoto': include("form/frmCambiarFoto.htm"); break;
-                                case 'cursosInscritos': echo "<iframe src='includes/src/alumnoBusqueda.php' width='930px' height='350px' frameborder='0'></iframe>"; break;
+                                case 'inscribircursos': include("form/frmAlumnoInscribirCurso.php"); break;
+                                case 'cursosInscritos': echo "<iframe src='includes/src/alumnoCursosInscritos.php?id=".$_SESSION["user"]."'' width='930px' height='350px' frameborder='0'></iframe>"; break;
                                 case 'lista': echo "<iframe src='includes/src/alumnoBusqueda.php' width='930px' height='350px' frameborder='0'></iframe>"; break;
                                 case 'registro': include("form/registro_alumno.htm"); break;
                             }
@@ -140,6 +140,6 @@ include("banner.htm");
           
            
 ?>
-</body>
 </div>
+</body>
 </html>
