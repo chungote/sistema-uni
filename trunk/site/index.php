@@ -111,6 +111,8 @@ include("banner.htm");
                                 case 'cambiarfoto': include("form/frmCambiarFoto.htm"); break;
                                 case 'inscribircursos': include("form/frmAlumnoInscribirCurso.php"); break;
                                 case 'cursosInscritos': echo "<iframe src='includes/src/alumnoCursosInscritos.php?id=".$_SESSION["user"]."'' width='930px' height='350px' frameborder='0'></iframe>"; break;
+                                case 'kardex': echo "<iframe src='includes/src/alumnokardex.php?id=".$_SESSION["user"]."&semestre=201202'' width='930px' height='350px' frameborder='0'></iframe>"; break;
+                                case 'boletanotas': echo "<iframe src='includes/src/alumnoBoletaNotas.php?id=".$_SESSION["user"]."&semestre=201202'' width='930px' height='350px' frameborder='0'></iframe>"; break;
                                 case 'lista': echo "<iframe src='includes/src/alumnoBusqueda.php' width='930px' height='350px' frameborder='0'></iframe>"; break;
                                 case 'registro': include("form/registro_alumno.htm"); break;
                             }

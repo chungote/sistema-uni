@@ -188,9 +188,6 @@ class alumno
         include '../conexion.php';
 
         $rslProm = $cn->query("CALL paAlumnoListarPromediosID('$idalumno','$semestre')");
-        $rsPromP = $cn->query("SELECT getPromedioPonderado('$idalumno','$semestre') AS promediop");
-        $rstotalC = $cn->query("SELECT getTotalCreditosXSemestre('$idalumno','$semestre') AS 'totalCreditos'");
-
         
         $i = 0;
         while ($rows = $rslProm->fetch_array(MYSQLI_ASSOC)) {
@@ -206,6 +203,27 @@ class alumno
         }
         ;
     }
+    
+    function cursosxCicloKardex($idalumno,$ciclo){
+	include '../conexion.php';
+
+        $rslProm = $cn->query(" CALL paKardexCiclo('$idalumno','$ciclo')");
+        
+        $i = 0;
+        while ($rows = $rslProm->fetch_array(MYSQLI_ASSOC)) {
+            echo "<tr>\n";
+            echo "<td>" . $rows["idcurso"] . "</td>\n";
+            echo "<td>" . $rows["nombre"] . "</td>\n";
+            echo "<td>" . $rows["creditos"] . "</td>\n";
+            echo "<td>" . $rows["vez"] . "</td>\n";
+            echo "<td>" . $rows["semestre"] . "</td>\n";
+            echo "<td>" . $rows["promedio"] . "</td>\n";
+            echo "<td>" . $rows["observacion"] . "</td>\n";
+            echo "</tr>";
+            $i++;
+        }
+        ;
+}
 
 }
 
