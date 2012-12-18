@@ -1,7 +1,7 @@
 <?php
 require('../class/alumno.php');
 require('../class/pagination.class.php');
-    $cn = new mysqli("localhost", "root", "r3b0rn");
+    $cn = new mysqli("localhost", "root", "");
     $cn->select_db("sist_uni");
 
 $items = 10;
@@ -70,7 +70,7 @@ $query = $cn->query($sqlStr);
         {
             echo "<tr>";
             echo "<td>".$rows["idalumno"]."</td>";
-            echo "<td>".$rows["nombre_completo"]."</td>";
+            echo "<td><a onclick='abrirVentana(a".'"http://localhost/sistema-uni/site/mainAdm.php"'.")'>".$rows["nombre_completo"]."</a></td>";
             echo "<td>".$rows["dni"]."</td>";
             echo "<td>".$rows["fecha_nacimiento"]."</td>";
             echo "<td>".$rows["telefono_fijo"]."</td>";

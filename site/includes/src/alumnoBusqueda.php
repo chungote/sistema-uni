@@ -1,7 +1,7 @@
 <?php
 session_start();
 @$_SESSION["usuario"];
-$cn = new mysqli("localhost", "root", "r3b0rn");
+$cn = new mysqli("localhost", "root", "");
 $cn->select_db("sist_uni");
 
 require('../class/alumno.php');
@@ -36,27 +36,51 @@ $query = $cn->query($sqlStr);
 ?>
     <head>
 	
-		<link rel="stylesheet" type="text/css" href="../../../css/style.css"/>  
+		 
     	<script src="../../../js/jquery.js" type="text/javascript"></script>
         <script src="../../../js/buscar.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../../css/tabla1.css" />
         <link rel="stylesheet" href="../../../css/pagination.css" />
+        <script type="text/javascript">
+        <!--
+        	function abrirVentana(url) {
+        window.open(url,"nuevo","directories=no,location=no,menubar=no,scrollbars=no,statusbar=no,tittlebar=no")
+        } 
+        -->
+        </script>
+        <style type="text/css">
+            #resultados{
+                height: 340px;
+                overflow:auto;
+                margin: 0px;
+            }
+            
+            form{
+                margin: 0px;
+            }
+           
+            a{
+                text-decoration: none;
+                color: #085D6C;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        </style>
 	</head>
-    
+    <body>
 	<form action="alumnoBusqueda.php" onsubmit="return buscar()">
         <table>
-        <tr>
-            <td>
-                <label>Buscar</label> 
-                <input type="text" id="q" name="q" value="<?php if (isset($q))
-    echo $busqueda; ?>" onKeyUp="return buscar()"/>
-            </td>
-            <td>
-                <input type="submit" value="Buscar" id="boton"/>
-                <span id="loading"></span>  
-            </td>
-        </tr>
-      
+            <tr>
+                <td>
+                    <label>Buscar</label> 
+                    <input type="text" id="q" name="q" value="<?php if (isset($q))
+                    echo $busqueda; ?>" onKeyUp="return buscar()"/>
+                </td>
+                <td>
+                    <input type="submit" value="Buscar" id="boton"/>
+                    <span id="loading"></span>  
+                </td>
+            </tr>
         </table>
     </form>
     <div id="resultados">
@@ -103,13 +127,13 @@ if ($aux['total'] > 0) {
     $i = 0;
     while ($rows = $rs_list->fetch_array(MYSQLI_ASSOC)) {
         echo "<tr>";
-        echo "<td>" . $rows["idalumno"] . "</td>";
-        echo "<td>" . $rows["nombre_completo"] . "</td>";
-        echo "<td>" . $rows["dni"] . "</td>";
-        echo "<td>" . $rows["fecha_nacimiento"] . "</td>";
-        echo "<td>" . $rows["telefono_fijo"] . "</td>";
-        echo "<td>" . $rows["celular"] . "</td>";
-        echo "<td>" . $rows["email"] . "</td>";
+        echo "<td>" . $rows["idalumno"] . "</td>\n";
+        echo "<td>".'<a href="#" onclick="abrirVentana('."'http://localhost/sistema-uni/site/mainAdm.php'".')">' . $rows["nombre_completo"] . '</a>'."</td>\n";
+        echo "<td>" . $rows["dni"] . "</td>\n";
+        echo "<td>" . $rows["fecha_nacimiento"] . "</td>\n";
+        echo "<td>" . $rows["telefono_fijo"] . "</td>\n";
+        echo "<td>" . $rows["celular"] . "</td>\n";
+        echo "<td>" . $rows["email"] . "</td>\n";
         echo "</tr>";
         $i++;
     }
@@ -120,5 +144,5 @@ if ($aux['total'] > 0) {
 ?>
     </div>
 
-   
+   </body>
 
