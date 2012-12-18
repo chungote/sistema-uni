@@ -129,7 +129,8 @@ include("banner.htm");
 							{
 								case 'datosp': echo "<iframe src='includes/src/docenteDatosID.php?id=".$_SESSION["user"]."' width='930px' height='350px' frameborder='0'></iframe>"; break;
 								case 'listacurso': echo "<iframe src='includes/src/docenteCurso.php?id=".$_SESSION["user"]."' width='930px' height='350px' frameborder='0'></iframe>"; break;
-								}
+								case 'registranotas': echo "<iframe src='form/frmDocenteRegistraNotas.php' width='930px' height='390px' frameborder='0'></iframe>"; break;
+                                }
                          break; 
                          
 						case 'adm':
@@ -137,6 +138,7 @@ include("banner.htm");
 							{
 								case 'listapagos': echo "<iframe src='includes/src/pagosConsultar.php' width='930px' height='350px' frameborder='0'></iframe>"; break;
 							    case 'registraOperaciones': case 'lista': echo "<iframe src='includes/src/alumnoBusqueda.php' width='930px' height='390px' frameborder='0'></iframe>"; break;
+                                
                             } 
                     }
         		}
