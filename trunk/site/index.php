@@ -136,7 +136,8 @@ include("banner.htm");
 							switch($opt)
 							{
 								case 'listapagos': echo "<iframe src='includes/src/pagosConsultar.php' width='930px' height='350px' frameborder='0'></iframe>"; break;
-							} 
+							    case 'registraOperaciones': case 'lista': echo "<iframe src='includes/src/alumnoBusqueda.php' width='930px' height='390px' frameborder='0'></iframe>"; break;
+                            } 
                     }
         		}
           

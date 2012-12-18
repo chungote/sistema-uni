@@ -215,10 +215,18 @@ class alumno
             echo "<td>" . $rows["idcurso"] . "</td>\n";
             echo "<td>" . $rows["nombre"] . "</td>\n";
             echo "<td>" . $rows["creditos"] . "</td>\n";
-            echo "<td>" . $rows["vez"] . "</td>\n";
+            $vez = $rows["vez"];
+            if($rows["vez"]=="") $vez = "0";
+            echo "<td>" . $vez . "</td>\n";
             echo "<td>" . $rows["semestre"] . "</td>\n";
-            echo "<td>" . $rows["promedio"] . "</td>\n";
-            echo "<td>" . $rows["observacion"] . "</td>\n";
+            
+            $prom = $rows["promedio"];
+            if($prom=="") $prom = "0";
+            echo "<td>" . $prom . "</td>\n";
+            
+            $obs = $rows["observacion"];
+            if($obs=="") $obs = "NO INSCRITO";
+            echo "<td>" . $obs . "</td>\n";
             echo "</tr>";
             $i++;
         }
