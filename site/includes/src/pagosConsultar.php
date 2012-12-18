@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="../../../css/tabla1.css" />
-<form action="pagosConsultar.php" method="post">
+<form action="pagosConsultar.php?id=<?php echo $_SESSION["user"]; ?>" method="post">
 	<table>
 		<tr>
 			<td>Campo de Busqueda: </td>

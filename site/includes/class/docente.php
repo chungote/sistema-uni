@@ -78,6 +78,10 @@ function ListarAlumnosxCursos($iddocente,$idcurso){
         };
         echo "</table></div>";
 }
+
+function registranotas(){
+	
+}
 	
 }
 

@@ -67,13 +67,11 @@
 					<span class="button-title">Open<br/>Table</span>
 					<span class="button-help">This button will open a table and add it to your document.</span>
 					<img class="ribbon-icon ribbon-normal" src="icons/normal/open-table.png" />
-					
 				</div>
 				<div class="ribbon-button ribbon-button-large disabled" id="del-table-btn">
 					<span class="button-title">Remove<br/>Table</span>
 					<span class="button-help">This button will remove the selected table from your document.</span>
 					<img class="ribbon-icon ribbon-normal" src="icons/normal/delete-table.png" />
-					
 				</div>
 			</div>
 			
@@ -83,13 +81,11 @@
 					<span class="button-title">Add<br/>Page</span>
 					<span class="button-help">This button will add a page to your document.</span>
 					<img class="ribbon-icon ribbon-normal" src="icons/normal/new-page.png" />
-					
 				</div>
 				<div class="ribbon-button ribbon-button-large" id="open-page-btn">
 					<span class="button-title">Open<br/>Page</span>
 					<span class="button-help">This button will open a page and add it to your document.</span>
 					<img class="ribbon-icon ribbon-normal" src="icons/normal/open-page.png" />
-					
 				</div>
 				<div class="ribbon-button ribbon-button-large disabled" id="del-page-btn">
 					<span class="button-title">Remove<br/>Page</span>
