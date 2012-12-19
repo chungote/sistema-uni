@@ -149,11 +149,11 @@ class alumno
 
     }
 
-    public function modificar($nombre, $apellidos, $sexo, $dni, $fechan, $direccion,
+    public function modificar($nombre, $apellidos, $dni, $fechan, $direccion,
         $telefono, $celular, $email, $id)
     {
         include '../conexion.php';
-        $rs = $cn->query("CALL paAlumnoActualizar('$nombre','$apellidos','$sexo','$dni','$fechan','$direccion','$telefono','$celular','$email','$id')");
+        $rs = $cn->query("CALL paAlumnoActualizar('$nombre','$apellidos','$dni','$fechan','$direccion','$telefono','$celular','$email','$id')");
 
         if ($rs)
             return true;

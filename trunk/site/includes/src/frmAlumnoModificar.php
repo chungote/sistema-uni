@@ -20,6 +20,8 @@
 -->
 </style>
 <script language="javascript">
+
+
 $(document).ready(function() {
     $().ajaxStart(function() {
         $('#loading').show();
@@ -35,7 +37,8 @@ $(document).ready(function() {
             data: $(this).serialize(),
             success: function(data) {
                 $('#result').html(data);
-                setTimeout(location.href="index.php", 2000);
+                idusuario = document.getElementById("codigo").value;
+              setTimeout(location.href="alumnoListaID.php?id="+idusuario,2000);
             }
         })
         
@@ -44,7 +47,7 @@ $(document).ready(function() {
 })  
 </script>
 <form method="post" action="alumnoModificar.php" id="alumnoModifica" name="alumnoModifica">
-<input type="hidden" name="codigo" value="<?php echo $datos["idalumno"];?>" />
+<input type="hidden" id="codigo" name="codigo" value="<?php echo $datos["idalumno"];?>" />
 <table class="tdatos">
 <tr>
 <td class="cabeceras">Nombre: </td>
