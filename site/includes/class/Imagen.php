@@ -2,12 +2,21 @@
 
 class imagen
 {
-    function subirImagen($nombreImagen,$idusuario)
+    function subirImagen($nombreImagen, $idusuario, $origen,$tipoimagen)
     {
-        $nfinal = $idusuario . $nombreImagen;
+        $separo = explode('/', strtolower($tipoimagen));
+        $nombre = $separo[0];
+        $extension = $separo[1];
+
+        $nfinal = $idusuario . '.' . $extension;
         $destino = '../../../images/usuarios/' . $nfinal;
-        $origen = $_FILES['imagen']['tmp_name'];
+
+        if (file_exists($destino)) {
+            unlink($destino);
+        }
         move_uploaded_file($origen, $destino);
+        
+        return $destino;
     }
 
     function crear_thumb($imagen, $idusuario, $ext)
@@ -23,6 +32,10 @@ class imagen
                 break;
 
             case 'jpg':
+                $imagen_src = imagecreatefromjpeg($imagen);
+                break;
+                
+            case 'jpeg':
                 $imagen_src = imagecreatefromjpeg($imagen);
                 break;
 
@@ -41,17 +54,15 @@ class imagen
         imagealphablending($thumb, false);
         imagecopyresampled($thumb, $imagen_src, 0, 0, 0, 0, $anchura, 170, $datos[0], $datos[1]);
         $nombreFoto = '../../../images/usuarios/' . $idusuario . '.jpg';
-        if(file_exists($nombreFoto))
-        {
-            unlink($nombreFoto);
-        }
+        // if(file_exists($nombreFoto))
+        //{
+        //  unlink($nombreFoto);
+        // }
         imagejpeg($thumb, $nombreFoto, 90);
         imagedestroy($imagen_src);
+        unlink($imagen);
         imagedestroy($thumb);
-        
-        /**
-         * function created by tibiyacks
-         */
+
     }
 
 }

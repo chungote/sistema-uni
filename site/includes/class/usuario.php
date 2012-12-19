@@ -34,15 +34,18 @@ function logear($tuser, $user, $pass){
 		header('Location: ../../index.php');
 	}
     
-    function cambiarFoto($nombreImagen,$tipoImagen,$idusuario,$nivel){
+    function cambiarFoto($nombreImagen,$tipoImagen,$idusuario,$nivel,$origen){
         require ('Imagen.php');
-        include("includes/conexion.php");
+        include("../conexion.php");
         $imagen = new imagen;
         
-        $subeImg = $imagen->subirImagen($nombreImagen,$idusuario);
-        $crearThumb = $imagen->crear_thumb($nombreImagen,$idusuario,$tipoImagen);
+        $subeImg = $imagen->subirImagen($nombreImagen,$idusuario,$origen,$tipoImagen);
+        $crearThumb = $imagen->crear_thumb($subeImg,$idusuario,$tipoImagen);
         
-        $rsImg = $cn->query("CALL paCambiarFoto('$nivel', '$idusuario', '$nombreImagen')");
+        $separo = explode('../../', strtolower($subeImg));
+        $p = $separo[0];
+        $ruta = $separo[1];
+        $rsImg = $cn->query("CALL paCambiarFoto('$nivel', '$idusuario', '$ruta')");
         
 }
 }
