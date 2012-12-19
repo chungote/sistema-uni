@@ -5,10 +5,10 @@ session_start();
         $rscbCurso = $cn->query("CALL paDocenteCursoListar('".$_SESSION["user"]."')");
         
 ?>
-<link rel="stylesheet" href="../../css/tabla1.css" />
-<script type="text/javascript" src="../../js/jquery.js"></script>
-<script type="text/javascript" src="../../js/jquery.jeditable.js"></script>
-<script type="text/javascript" src="../../js/js.js"></script>
+<link rel="stylesheet" href="../../../css/tabla1.css" />
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.jeditable.js"></script>
+<script type="text/javascript" src="js.js"></script>
 <form action="frmDocenteRegistraNotas.php" method="post">
 	<table>
 		<tr>
@@ -58,7 +58,7 @@ $u = $_SESSION["user"];
             echo "<td>".$rows["idalumno"]."</td>";
             echo "<td>".$rows["nombre"]."</td>";
             echo "<td>".$rows["vez"]."</td>";
-            echo '<td><div class="text" id="promedio-'.$_SESSION["user"].'">'.$rows["promedio"].'</div></td>';
+            echo '<td><div class="text" id="promedio-'.$rows["idalumno"].'">'.$rows["promedio"].'</div></td>';
             echo "</tr>";
             $i++;
         };
