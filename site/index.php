@@ -7,7 +7,8 @@
 		<title>...::: SIGA :::...</title>
 		<link rel="stylesheet" type="text/css" href="../css/style.css"/>
         
-        
+        <script type="text/javascript" src="../js/jquery-latest.js"></script>
+<script type="text/javascript" src="../js/jquery.tablesorter.js"></script>
     	<script src="../js/jquery-1.8.3.js" type="text/javascript"></script>
         <script src="../js/buscar.js" type="text/javascript"></script>
         
@@ -111,7 +112,7 @@ include("banner.htm");
                                 case 'cambiarfoto': include("form/frmCambiarFoto.htm"); break;
                                 case 'inscribircursos': include("form/frmAlumnoInscribirCurso.php"); break;
                                 case 'cursosInscritos': echo "<iframe src='includes/src/alumnoCursosInscritos.php?id=".$_SESSION["user"]."'' width='930px' height='350px' frameborder='0'></iframe>"; break;
-                                case 'kardex': echo "<iframe src='includes/src/alumnokardex.php?id=".$_SESSION["user"]."&semestre=201201'' width='930px' height='350px' frameborder='0'></iframe>"; break;
+                                case 'kardex': echo "<iframe src='includes/src/alumnoKardex.php?id=".$_SESSION["user"]."&semestre=201201'' width='930px' height='350px' frameborder='0'></iframe>"; break;
                                 case 'boletanotas': echo "<iframe src='includes/src/alumnoBoletaNotas.php?id=".$_SESSION["user"]."&semestre=201202'' width='930px' height='350px' frameborder='0'></iframe>"; break;
                                 case 'lista': echo "<iframe src='includes/src/alumnoBusqueda.php' width='930px' height='350px' frameborder='0'></iframe>"; break;
                                 case 'registro': include("form/registro_alumno.htm"); break;
@@ -129,7 +130,7 @@ include("banner.htm");
 							{
 								case 'datosp': echo "<iframe src='includes/src/docenteDatosID.php?id=".$_SESSION["user"]."' width='930px' height='350px' frameborder='0'></iframe>"; break;
 								case 'listacurso': echo "<iframe src='includes/src/docenteCurso.php?id=".$_SESSION["user"]."' width='930px' height='350px' frameborder='0'></iframe>"; break;
-								case 'registranotas': echo "<iframe src='form/frmDocenteRegistraNotas.php' width='930px' height='390px' frameborder='0'></iframe>"; break;
+								case 'registranotas': echo "<iframe src='includes/src/frmDocenteRegistraNotas.php' width='930px' height='390px' frameborder='0'></iframe>"; break;
                                 }
                          break; 
                          
@@ -138,7 +139,7 @@ include("banner.htm");
 							{
 								case 'listapagos': echo "<iframe src='includes/src/pagosConsultar.php' width='930px' height='350px' frameborder='0'></iframe>"; break;
 							    case 'registraOperaciones': case 'lista': echo "<iframe src='includes/src/alumnoBusqueda.php' width='930px' height='390px' frameborder='0'></iframe>"; break;
-                                
+                                case 'historialPagos': include "includes/src/historialPagos.php"; break;
                             } 
                     }
         		}
